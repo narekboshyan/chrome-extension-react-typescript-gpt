@@ -1,0 +1,44 @@
+{
+    "action": {
+    "default_popup": "popup.html"
+  },
+  "default_locale": "en",
+    "background": {
+      "service_worker": "backgroundRun.js",
+      "type": "module"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": [
+          "content.js"
+        ],
+        "all_frames": true
+      }
+    ],
+    "description": "__MSG_appDesc__",
+    "manifest_version": 3,
+    "name": "__MSG_appName__", 
+    "permissions": [
+      "tabs",
+      "webNavigation"
+    ],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "version": "0.1.0",
+    "web_accessible_resources": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "resources": [
+          "css/*",
+          "images/*",
+          "popup.html"
+        ]
+      }
+    ]
+  }
