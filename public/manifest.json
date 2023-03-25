@@ -3,6 +3,7 @@
     "default_popup": "popup.html"
   },
   "default_locale": "en",
+  "minimum_chrome_version": "93",
     "background": {
       "service_worker": "backgroundRun.js",
       "type": "module"

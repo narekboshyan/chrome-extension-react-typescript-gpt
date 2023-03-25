@@ -4,6 +4,6 @@
       type: 'LOG_HELLO_WORLD',
       payload: '',
     },
-    console.log
+    console.log,
   );
 })();

@@ -1,14 +1,12 @@
-const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: {
-    popup: path.join(__dirname, 'src/popup.js'),
-    content: path.join(__dirname, 'src/content.jsx'),
-    background: path.join(__dirname, 'src/background.js'),
-    backgroundRun: path.join(__dirname, 'src/background_run.js'),
+    popup: path.join(__dirname, 'src/popup.ts'),
+    content: path.join(__dirname, 'src/content.tsx'),
+    background: path.join(__dirname, 'src/background.ts'),
+    backgroundRun: path.join(__dirname, 'src/background_run.ts'),
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -28,7 +26,7 @@ const config = {
         exclude: /\.module\.css$/,
       },
       {
-        test: /\.(jsx?)$/,
+        test: /\.(tsx?)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
