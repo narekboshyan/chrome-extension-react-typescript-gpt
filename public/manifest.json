@@ -1,45 +1,39 @@
 {
-    "action": {
-    "default_popup": "popup.html"
+  "name": "Input Tracker",
+  "description": "Tracks active input boxes and displays 'found' when any word starts with '//'",
+  "permissions": ["storage", "activeTab", "scripting", "contextMenus"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
   },
   "default_locale": "en",
   "minimum_chrome_version": "93",
-    "background": {
-      "service_worker": "backgroundRun.js",
-      "type": "module"
-    },
-    "content_scripts": [
-      {
-        "matches": [
-          "<all_urls>"
-        ],
-        "js": [
-          "content.js"
-        ],
-        "all_frames": true
-      }
-    ],
-    "description": "__MSG_appDesc__",
-    "manifest_version": 3,
-    "name": "__MSG_appName__", 
-    "permissions": [
-      "tabs",
-      "webNavigation"
-    ],
-    "host_permissions": [
-      "<all_urls>"
-    ],
-    "version": "0.1.0",
-    "web_accessible_resources": [
-      {
-        "matches": [
-          "<all_urls>"
-        ],
-        "resources": [
-          "css/*",
-          "images/*",
-          "popup.html"
-        ]
-      }
-    ]
-  }
+  "background": {
+    "service_worker": "backgroundRun.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true
+    }
+  ],
+  "externally_connectable": {
+    "matches": ["*://*.google.com/*", "*://*.com/*", "*://*/*"]
+  },
+
+  "manifest_version": 3,
+  "host_permissions": ["<all_urls>"],
+  "version": "0.1.0",
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["css/*", "images/*", "popup.html"]
+    }
+  ]
+}

@@ -1,15 +1,18 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+import CopyPlugin from 'copy-webpack-plugin';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const config = {
   entry: {
-    popup: path.join(__dirname, 'src/popup.ts'),
-    content: path.join(__dirname, 'src/content.tsx'),
-    background: path.join(__dirname, 'src/background.ts'),
-    backgroundRun: path.join(__dirname, 'src/background_run.ts'),
+    popup: join(__dirname, 'src/popup.tsx'),
+    content: join(__dirname, 'src/content.tsx'),
+    background: join(__dirname, 'src/background.ts'),
+    backgroundRun: join(__dirname, 'src/background_run.ts'),
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: join(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: '',
   },
@@ -28,7 +31,7 @@ const config = {
       {
         test: /\.(tsx?)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: 'ts-loader',
       },
     ],
   },
@@ -38,8 +41,8 @@ const config = {
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
 };
 
-module.exports = config;
+export default config;
